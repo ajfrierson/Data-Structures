@@ -124,13 +124,10 @@ class DoublyLinkedList:
   def move_to_end(self, node):
         if not self.head and not self.tail:
             return None
-
         elif self.head == self.tail:
             pass
-
         else:
             self.delete(node)
-            
             self.add_to_tail(node.value)
             if node == self.head:
                 self.head = node.next
