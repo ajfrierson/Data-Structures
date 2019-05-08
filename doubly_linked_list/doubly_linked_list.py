@@ -122,16 +122,18 @@ class DoublyLinkedList:
             current_head.prev = node
 
   def move_to_end(self, node):
-      # check if empty
-      if self.tail is not node:
-          # if in a middle spot
-          if node.next and node.prev:
-              node.delete()
-          current_tail = self.tail
-          # the new tail's prev should be the old node that's in behind it and likewise that item's `next` should now point to the new tail which is node
-          self.tail = node
-          node.prev = current_tail
-          current_tail.prev = node
+        if not self.head and not self.tail:
+            return None
+
+        elif self.head == self.tail:
+            pass
+
+        else:
+            self.delete(node)
+            
+            self.add_to_tail(node.value)
+            if node == self.head:
+                self.head = node.next
 
   def delete(self, node):
       self.length -= 1  
